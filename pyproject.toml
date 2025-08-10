@@ -1,0 +1,47 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "graph-rag"
+version = "0.1.0"
+description = "Graph RAG toolkit for knowledge extraction and graph building"
+readme = "README.md"
+requires-python = ">=3.10"
+authors = [
+    {name = "Michalina Kryjan-Kuchta", email = "michalina.kryjan-kuchta@roche.com"},
+    {name = "Michał Kożuch", email = "michal.kozuch@roche.com"}
+]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+]
+dependencies = [
+    "llama-index-embeddings-openai-like",
+    "langchain_openai",
+    "llama-index-llms-openllm",
+    "opensearch-py",
+    "llama-index-vector-stores-opensearch",
+    "faker"
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0.0",
+    "pytest-cov>=4.0.0",
+    "ruff",
+    "pre-commit>=2.20.0"
+]
+
+[project.scripts]
+graph-rag-export = "tools.export:main"
+graph-rag-build = "tools.build_graph:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
